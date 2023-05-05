@@ -1,0 +1,32 @@
+Proposta para personalização do dominó
+Yalle Carvalho - 119210523
+
+Primeiramente, diante das alternativas, eu ainda preferiria um dominó com números. 
+
+Pra fazer algo personalizado, usaria o dominó com potencias (1, 2, 4, 8, 16, 32).
+Assim como no código já existente, deixaria o construtor que inicia os atributos comuns como já está (rodadasJogadas, finalizado, vencedor, mesa). 
+Criaria uma classe "PecaPersonalizada" onde ela vai herdar métodos da classe "Peca", visto que por definição, ela também teria que ter um lado direito e um lado esquerdo e os métodos atuais da classe "Peca" se encaixariam nas definições do que "PecaPersonalizada" precisaria ter. 
+
+"PecaPersonalizada" teria como parte da classe:
+- Construtor padrão inicializando os dois lados da peÁa (esquerdo e direita), com a diferença que esses números seriam só da lista de potências de 2. 
+- public void gira()
+- public int getNumDireito()
+- public int getNumEsquerdo()
+- public boolean encaixa (int numero)
+- public getPontosPeca() -> importante para definiÁıes de vitória
+- public boolean pecaCarroca() -> visto que por usar uma lista de potências de 2, pode ter números repetidos. 
+- public String toString()
+
+Basicamente todos os métodos que "Peca" já possui, e que podem ter seu código reutilizados por herança. 
+
+Na classe Mesa, receberia no construtor Deque <PecaPersonalizada> pecasPersonalizadas = new LinkedList<PecaPersonalizada>()
+Criando assim a mesa vazia com a lista, que terá a lista de peças personalizadas por sua vez criada em um método similar ao usado por "Peca", na classe Jogo. 
+
+O método seria o private List<PecaPersonalizada> pecasPersonalizadas = criaPecasPersonalizadas()
+Nele seria criado o dominó com as potências de 2 através de um for que faria a iteração para criar a lista de peças com números que só potencias de dois e retornaria a lista pecaPersonalizada. 
+
+Essa lista por sua vez seria embaralhada semelhantemente a forma como a lista de peças está sendo, chamando a criação da lista de peças personalizadas e depois usando o Collections.shuffle(pecasPersonalizadas, geradosDeNums) para deixar a lista de peças personalizadas embaralhada. 
+
+O sorteio da mão do jogador funcionaria da mesma forma do dominó normal. 
+
+
